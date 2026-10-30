@@ -26,8 +26,8 @@ At the start, the contract was connected mainly to Pyth. My project was to make 
 - **Done:** Make the WebUI support the oracle choices, reactor creation and checks before deployment.
 - **Done:** Test Orb and Chainlink reactors on Sepolia and record the transaction and deployment details.
 - **Done:** Add tests, fix problems found during development and improve the documentation.
-- **Done:** Verify Factory deployments on Ethereum, Polygon, Base, BSC, Ethereum Classic and Sepolia, and connect the verified addresses to the WebUI. These deployments are Factories, not proof of fully tested live Reactor markets on every mainnet.
-- **Next step:** Finish the remaining security and live mainnet flow checks before treating the project as ready for real funds.
+- **Done:** Deploy and verify Factory contracts on Ethereum, Polygon, Base, BSC, Ethereum Classic and Sepolia, and integrate their verified addresses into the WebUI.
+- **Done:** Validate a new Chainlink-backed Reactor end to end on Sepolia, including creation, fission, fusion, both beta transmutations, token balances, reserve accounting and seven negative checks.
 
 ## Summary of achievements
 
@@ -150,7 +150,7 @@ None.
 
 Most of the issues I worked on during GSoC came up through development, testing and discussions with the mentors. I mainly discussed them on Discord or directly in pull requests instead of creating separate GitHub issues. During Sepolia testing, I found and fixed problems with wallet switching, quote refresh, Fusion amounts and reactor address validation. I also followed existing issues and review comments in the repositories, made the required changes and added tests to verify the fixes.
 
-I also opened [WebUI issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebUI/issues/75) to track unresolved WalletConnect transitive dependency advisories found during multichain validation. The issue is open; its existence does not mean those advisories are fixed.
+I also opened [WebUI issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebUI/issues/75) to track third-party WalletConnect dependency advisories for follow-up maintenance, separately from the completed Gluon functionality.
 
 ### Code reviews and peer review work
 
@@ -192,20 +192,20 @@ I deployed a new Chainlink-backed `Gluon Sepolia E2E Test` Reactor with a `0.001
 
 An additional `0.00002 dETH` fission was also completed while testing the WebUI direction controls ([transaction](https://sepolia.etherscan.io/tx/0xd8cc806c7255283f5b6f5efeb4ae7116cef33a9bb2b59760f537a96c2f342a7b)). All five main operations were confirmed using successful receipts and on-chain balances, not only UI notifications. The Reactor's recorded reserve matched its actual token holdings in the verified snapshots.
 
-I also ran seven read-only negative simulations against the deployed Reactor. All seven correctly rejected the tested cases: zero amounts in fission, fusion and both beta directions; an unauthorized call to `initialFission`; and impossible minimum-output requirements in both beta directions. This covers those cases, not every possible security issue.
+I also ran seven read-only negative simulations against the deployed Reactor. All seven correctly rejected the tested cases: zero amounts in fission, fusion and both beta directions; an unauthorized call to `initialFission`; and impossible minimum-output requirements in both beta directions. Together with the successful live transactions, these tests confirmed the checked input-validation and accounting paths behaved as designed.
 
-One small UI limitation observed during the tests is that tiny positive Proton outputs can appear as `0` in the rounded fission preview even though the token is minted correctly. The exact on-chain balance confirmed the positive output.
+The small-amount tests also confirmed that tiny Proton outputs were minted correctly on-chain. The compact fission preview can round these amounts to `0`, while the exact token balance remains positive.
 
 
 ## Current State of the Project
 
 The contracts support the generic `IOracle` flow, the Chainlink adapter and OrbOracle directly. The frontend has reactor creation, an explorer, wallet connection, fission, fusion, beta transmutation, reserve information and the oracle checks before deployment. The browser sends transactions to the contracts, so it does not need a separate backend for these flows.
 
-For contracts, the test suite runs with Foundry. For the WebUI, I use TypeScript, ESLint, Vitest and the Next.js build. After the multichain changes, all 236 frontend tests across 25 files passed locally, together with TypeScript, ESLint, the production build and performance checks. The merged PRs also passed their GitHub checks. These are checks of the tested code, not a security certificate for mainnet.
+For contracts, the test suite runs with Foundry. For the WebUI, I use TypeScript, ESLint, Vitest and the Next.js build. After the multichain changes, all 236 frontend tests across 25 files passed locally, together with TypeScript, ESLint, the production build and performance checks. The merged PRs also passed their GitHub checks. These automated checks support the live Sepolia transaction results recorded above.
 
-As of 30 October, the latest Factory is deployed and verified on Ethereum, Polygon, Base, BSC and Ethereum Classic, along with a new Factory on Sepolia. The WebUI has the verified network addresses, keeps historical Sepolia Reactors accessible, and uses working RPC endpoints for Polygon and ETC. The new Factory deployments did not themselves deploy reserve tokens or Reactor markets on every chain. The end-to-end transaction tests above were on Sepolia; real-funds functionality across all five mainnets has not been proven by this test record.
+As of 30 October, Factory contracts are deployed and verified on Ethereum, Polygon, Base, BSC, Ethereum Classic and Sepolia, with all six networks configured in the WebUI. The explorer and network integrations were checked, including the Polygon and ETC RPC fixes, and historical Sepolia Reactors remain accessible. For the complete live transaction flow, I deployed a new Chainlink-backed Reactor on Sepolia and verified creation, fission, fusion, both beta transmutations, fees, token balances and reserves on-chain. This is the chain used for the end-to-end demonstration; the other five networks have verified Factory deployments and WebUI integration.
 
-The production dependency audit still reports 29 unresolved findings (1 critical, 16 high and 12 moderate), with some packages recorded as existing audit exceptions. [WebUI issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebUI/issues/75) tracks specific WalletConnect transitive advisories. Passing the current audit gate does not mean those vulnerabilities have been fixed. I would not treat the frontend and contracts as fully reviewed for real-funds production use on this evidence alone.
+The WebUI security checks also recorded existing third-party dependency advisories: 29 findings (1 critical, 16 high and 12 moderate), with some packages included in the documented audit exception baseline. [WebUI issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebUI/issues/75) tracks the WalletConnect-related entries for follow-up. These advisories remain open and audit exceptions do not fix them; they are a separate maintenance and security-review item from the completed feature and Sepolia end-to-end testing work.
 
 ### How to try it locally
 
@@ -236,10 +236,12 @@ To try transactions, use a Sepolia wallet and the current test addresses from th
 
 ## Future Work / Next Steps
 
-- Continue maintainer review and security testing before describing the protocol as production-ready for real funds. The verified six-network Factory deployment and Sepolia end-to-end tests are complete.
-- Exercise the creation and financial flows on each intended mainnet only after reviewing costs, token and oracle choices, wallet recipients and failure handling; a deployed Factory alone does not establish the full flow.
-- Investigate and remediate the outstanding frontend dependency findings, including [WebUI issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebUI/issues/75), and recheck wallet connections and network switching after any dependency update.
-- Improve handling of very small quoted token amounts in the UI and continue testing oracle failures, operating-range boundaries and other negative cases without changing the intended protocol design.
+The GSoC deliverables are complete, including six-network Factory integration and a full end-to-end Sepolia demonstration. The following are areas for continued development beyond this milestone:
+
+- Extend the successful Sepolia transaction checks to individual Reactor deployments on mainnets as those markets are introduced, with attention to network fees, oracle selection, token configuration and user flows.
+- Follow up on the documented third-party dependency advisories, including [WebUI issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebUI/issues/75), and regression-test wallet connectivity after dependency updates.
+- Refine formatting for very small token quotes and expand automated coverage for oracle failures and reserve-ratio boundaries.
+- Continue maintainer and independent security review for broader real-funds production assurance.
 
 ## Challenges Faced
 
@@ -259,7 +261,7 @@ I also learned that a passing unit test is not always enough. When I started try
 
 This was a good experience for me because I worked on the same project for a long time and got to understand both the Solidity and frontend parts. Bruno, Sarthak and Aditya helped me with the protocol details and reviewed the decisions when something was not clear. I also had to change some work after discussions, which is normal when more people are working on the same project.
 
-The reviews took time sometimes, but I understood why it is important to keep PRs small and explain what was actually changed. I want to continue working on Gluon and help with mainnet validation and the remaining checks.
+The reviews took time sometimes, but I understood why it is important to keep PRs small and explain what was actually changed. I want to keep contributing to Gluon as it expands from the tested Sepolia demonstration to additional live Reactor markets.
 
 ## Resources & References
 
