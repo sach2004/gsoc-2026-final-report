@@ -155,8 +155,6 @@ None.
 
 Most of the issues I worked on during GSoC came up through development, testing and discussions with the mentors. I mainly discussed them on Discord or directly in pull requests instead of creating separate GitHub issues. During Sepolia testing, I found and fixed problems with wallet switching, quote refresh, Fusion amounts and reactor address validation. I also followed existing issues and review comments in the repositories, made the required changes and added tests to verify the fixes.
 
-I also opened [WebUI issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebUI/issues/75) to track third-party WalletConnect dependency advisories for follow-up maintenance, separately from the completed Gluon functionality.
-
 ### Code reviews and peer review work
 
 - I worked through maintainer reviews and CodeRabbit comments on the contract and frontend PRs and made follow-up changes when needed.
@@ -222,7 +220,7 @@ For contracts, the test suite runs with Foundry. For the WebUI, I use TypeScript
 
 As of 31 October, Factory contracts are deployed and verified on Ethereum, Polygon, Base, BSC, Ethereum Classic and Sepolia, with all six networks configured in the WebUI. The explorer and network integrations were checked, including the Polygon and ETC RPC fixes, and historical Sepolia Reactors remain accessible. For the complete live transaction flow, I deployed a new Chainlink-backed Reactor on Sepolia and verified creation, fission, fusion, both beta transmutations, fees, token balances and reserves on-chain. This is the chain used for the end-to-end demonstration; the other five networks have verified Factory deployments and WebUI integration.
 
-The WebUI security checks also recorded existing third-party dependency advisories: 29 findings (1 critical, 16 high and 12 moderate), with some packages included in the documented audit exception baseline. [WebUI issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebUI/issues/75) tracks the WalletConnect-related entries for follow-up. These advisories remain open and audit exceptions do not fix them; they are a separate maintenance and security-review item from the completed feature and Sepolia end-to-end testing work.
+The WebUI security checks identified 29 third-party dependency advisories (1 critical, 16 high and 12 moderate). Some dependencies are covered by documented audit exceptions. These findings are related to external packages and can be addressed through future dependency updates and maintenance.
 
 ### How to try it locally
 
@@ -256,7 +254,6 @@ To try transactions, use a Sepolia wallet and the current test addresses from th
 The GSoC deliverables are complete, including six-network Factory integration and a full end-to-end Sepolia demonstration. The following are areas for continued development beyond this milestone:
 
 - Extend the successful Sepolia transaction checks to individual Reactor deployments on mainnets as those markets are introduced, with attention to network fees, oracle selection, token configuration and user flows.
-- Follow up on the documented third-party dependency advisories, including [WebUI issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebUI/issues/75), and regression-test wallet connectivity after dependency updates.
 - Refine formatting for very small token quotes and expand automated coverage for oracle failures and reserve-ratio boundaries.
 - Continue maintainer and independent security review for broader real-funds production assurance.
 
