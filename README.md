@@ -33,7 +33,7 @@ At the start, the contract was connected mainly to Pyth. My project was to make 
 
 During GSoC I worked on both the contracts and the frontend. The main thing I wanted to finish was the generic oracle support. Now Gluon can use Chainlink through the adapter and Orb directly through `IOracle`. I also updated the frontend to create and use these reactors.
 
-By 30 October, I also verified Factory deployments on five mainnets and Sepolia and tested a fresh Reactor on Sepolia. Creation, fission, fusion, and both beta transmutations succeeded on-chain, with the token balances, fees and reserve accounting checked against the receipts.
+By 30 October, I verified Factory deployments on five mainnets and Sepolia. I also tested a WETH-backed Reactor on Ethereum Mainnet on 29 October and a fresh Chainlink-backed Reactor on Sepolia on 30 October. Creation, fission, fusion and both beta transmutations succeeded in the recorded live transactions, with token balances, fees and reserve accounting checked against the receipts.
 
 I am most happy with getting the full flow working on Sepolia. It helped me find smaller problems with the amounts, fees, wallet changes and quotes which were not so clear just by reading the code. I fixed those and added tests where it was needed. The proposal was mainly about the oracle work, but later I also worked a lot on pricing, reserve calculations and the UI because those parts needed to match the latest contracts.
 
@@ -188,11 +188,25 @@ I deployed and verified Gluon-EVM Factory contracts on five mainnets and Ethereu
 | Ethereum Classic | [Blockscout](https://etc.blockscout.com/tx/0x0ecd3a5490aaeb0e1db8a307ec4ab41a6a2f7be756acfce1417d89f5e4a82c40) |
 | Ethereum Sepolia | [Etherscan](https://sepolia.etherscan.io/tx/0xd5a1f6a65d59bd56a57d51aea1d5cbefb7ffe537529408688d5c8c3c9d935f88) |
 
-The mainnet deployments establish the Factory contracts on their respective networks. I demonstrated the complete Reactor lifecycle with actual Sepolia transactions, including creation, fission, fusion and both transmutation directions.
+The deployments above establish the Factory contracts on their respective networks. I also exercised a WETH-backed Reactor with real transactions on Ethereum Mainnet and a separate end-to-end Reactor on Sepolia, with evidence for both below.
 
 - **Live WebUI:** https://evm.gluon.stability.nexus/
 - **Deployment documentation:** [Contracts](https://github.com/StabilityNexus/Gluon-EVM/blob/main/Deployments.md) and [WebUI](https://github.com/StabilityNexus/Gluon-EVM-WebUI/blob/main/Deployments.md)
 - **Gluon launch video:** https://drive.google.com/file/d/1CaT8oX_xKtSoXEXsd9C-0TedR4tJVYdU/view
+
+### Live Ethereum Mainnet Reactor transactions (29 October 2026)
+
+On 29 October, I deployed the [Gluon WETH Reactor](https://etherscan.io/address/0x6Fc7849305831aEf081D710c2f84A6fDdA57E519) through the live WebUI with MetaMask, using real WETH and the Chainlink ETH/USD oracle adapter. The following five transactions were recorded as successful during the mainnet functional test:
+
+| Operation | Ethereum Mainnet evidence | Recorded result |
+|---|---|---|
+| Reactor creation | [Transaction](https://etherscan.io/tx/0xab4095fdd0d6d6facc60764d46077f95cbbe4b10f8a140c3ea30da7742796743) | `0.0013 WETH` seed; `0.0012987 WETH` reserve after the developer fee |
+| Fission | [Transaction](https://etherscan.io/tx/0xddd49a1aa50aa5bd798bc35afbd70ddbeeb73b46d6fcac85f1db86b36002c0b4) | `0.0005 WETH` supplied; `0.76955034449484 GUSD` and `0.0001665 GPETH` minted |
+| Fusion | [Transaction](https://etherscan.io/tx/0x37aedf95363472c7e98dc52498713a3834766977db3af285051180f6aef93ac1) | GUSD and GPETH burned; `0.00024975 WETH` returned after the developer fee |
+| Beta plus (Proton to Neutron) | [Transaction](https://etherscan.io/tx/0x3a9f34792ee4b8e6bcf9804f135b0bb9c94b7eba876a441b4496eff1b2942cc5) | `0.000008 GPETH` burned; `0.018760948344244603 GUSD` minted |
+| Beta minus (Neutron to Proton) | [Transaction](https://etherscan.io/tx/0x3c66a853065045047a9a3772ebe3cc55dd7c9f2d9fef02724274f55b611c8462) | `0.04 GUSD` burned; `0.000017022610698562 GPETH` minted |
+
+In the final 29 October on-chain snapshot, the Reactor's reported WETH reserve and its actual WETH balance both equaled `1,548,174,698,046,140 wei`, with a `0 wei` difference. This is evidence of the tested mainnet functionality and reserve accounting, **not an independent security audit or certification of production readiness**.
 
 ### Live Sepolia Reactor transactions (30 October 2026)
 
@@ -219,7 +233,7 @@ The contracts support the generic `IOracle` flow, the Chainlink adapter and OrbO
 
 For contracts, the test suite runs with Foundry. For the WebUI, I use TypeScript, ESLint, Vitest and the Next.js build. After the multichain changes, all 236 frontend tests across 25 files passed locally, together with TypeScript, ESLint, the production build and performance checks. The merged PRs also passed their GitHub checks. These automated checks support the live Sepolia transaction results recorded above.
 
-As of 31 October, Factory contracts are deployed and verified on Ethereum, Polygon, Base, BSC, Ethereum Classic and Sepolia, with all six networks configured in the WebUI. The explorer and network integrations were checked, including the Polygon and ETC RPC fixes, and historical Sepolia Reactors remain accessible. For the complete live transaction flow, I deployed a new Chainlink-backed Reactor on Sepolia and verified creation, fission, fusion, both beta transmutations, fees, token balances and reserves on-chain. This is the chain used for the end-to-end demonstration; the other five networks have verified Factory deployments and WebUI integration.
+As of 31 October, Factory contracts are deployed and verified on Ethereum, Polygon, Base, BSC, Ethereum Classic and Sepolia, with all six networks configured in the WebUI. The explorer and network integrations were checked, including the Polygon and ETC RPC fixes, and historical Sepolia Reactors remain accessible. For the complete live transaction flow, I deployed a new Chainlink-backed Reactor on Sepolia and verified creation, fission, fusion, both beta transmutations, fees, token balances and reserves on-chain. Sepolia provided a separate testnet end-to-end demonstration. Ethereum Mainnet also has the live WETH Reactor checks recorded above; Polygon, Base, BSC and Ethereum Classic have verified Factory deployments and WebUI integration.
 
 The WebUI security checks identified 29 third-party dependency advisories (1 critical, 16 high and 12 moderate). Some dependencies are covered by documented audit exceptions. These findings are related to external packages and can be addressed through future dependency updates and maintenance.
 
@@ -254,7 +268,7 @@ To try transactions, use a Sepolia wallet and the current test addresses from th
 
 The GSoC deliverables are complete, including six-network Factory integration and a full end-to-end Sepolia demonstration. The following are areas for continued development beyond this milestone:
 
-- Extend the successful Sepolia transaction checks to individual Reactor deployments on mainnets as those markets are introduced, with attention to network fees, oracle selection, token configuration and user flows.
+- Extend the live Reactor transaction checks already performed on Ethereum Mainnet and Sepolia to Polygon, Base, BSC and Ethereum Classic as markets are introduced, with attention to network fees, oracle selection, token configuration and user flows.
 - Refine formatting for very small token quotes and expand automated coverage for oracle failures and reserve-ratio boundaries.
 - Continue maintainer and independent security review for broader real-funds production assurance.
 
