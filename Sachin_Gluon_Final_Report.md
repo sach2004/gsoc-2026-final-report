@@ -176,14 +176,26 @@ These totals are based on the GitHub PR records checked on 31 October 2026. The 
 
 ## Demo
 
-I used Sepolia for the demo and testing. The contract and WebUI deployment documents show the Orb and Chainlink reactors with their addresses and fission and fusion transactions. I also used the browser wallet to check the amounts and the transaction flow.
+### Live Factory deployments across six EVM networks (October 2026)
 
-- **Testnet deployments and earlier transaction results:** [Gluon-EVM Deployments.md](https://github.com/StabilityNexus/Gluon-EVM/blob/main/Deployments.md) and [Gluon-EVM-WebUI Deployments.md](https://github.com/StabilityNexus/Gluon-EVM-WebUI/blob/main/Deployments.md).
-- **Recent Fusion transaction:** [Sepolia Etherscan transaction](https://sepolia.etherscan.io/tx/0x48d6c939e9fffc92ed32de86eaa1e999ebf6fd16c57208c6a75e21a474093c29). The wallet received `0.002 dETH` in this test.
-- **Gluon Launch Video:** [Watch the video](https://drive.google.com/file/d/1CaT8oX_xKtSoXEXsd9C-0TedR4tJVYdU/view?usp=sharing) — I created this video to introduce Gluon and give a brief overview of how the protocol works.
+I deployed and verified Gluon-EVM Factory contracts on five mainnets and Ethereum Sepolia. These are real on-chain deployments with successful transaction receipts and verified contract configurations. The WebUI is also configured with the deployed Factory addresses across all six networks.
 
+| Network | Deployment transaction |
+|---|---|
+| Ethereum Mainnet | [Etherscan](https://etherscan.io/tx/0x80437034864480b15e768ceb391a93dadbd06c2722435646747b9574c16e2960) |
+| Polygon Mainnet | [PolygonScan](https://polygonscan.com/tx/0xb328ca86884dd7ffcdabd79d7b9c9763aa61b9b782766f9410fb612852abe8f9) |
+| Base Mainnet | [BaseScan](https://basescan.org/tx/0x9eb3050c1231d8b5f18d44793c02f2ee250a5e26c713c31d08593b4669d73833) |
+| BNB Smart Chain | [BscScan](https://bscscan.com/tx/0x1e798cd5160c59dd622232681fd487b1c09782245dfe8e009ed3ed4af382aea1) |
+| Ethereum Classic | [Blockscout](https://etc.blockscout.com/tx/0x0ecd3a5490aaeb0e1db8a307ec4ab41a6a2f7be756acfce1417d89f5e4a82c40) |
+| Ethereum Sepolia | [Etherscan](https://sepolia.etherscan.io/tx/0xd5a1f6a65d59bd56a57d51aea1d5cbefb7ffe537529408688d5c8c3c9d935f88) |
 
-### Latest Sepolia end-to-end tests (30 October 2026)
+The mainnet deployments establish the Factory contracts on their respective networks. I demonstrated the complete Reactor lifecycle with actual Sepolia transactions, including creation, fission, fusion and both transmutation directions.
+
+- **Live WebUI:** https://evm.gluon.stability.nexus/
+- **Deployment documentation:** [Contracts](https://github.com/StabilityNexus/Gluon-EVM/blob/main/Deployments.md) and [WebUI](https://github.com/StabilityNexus/Gluon-EVM-WebUI/blob/main/Deployments.md)
+- **Gluon launch video:** https://drive.google.com/file/d/1CaT8oX_xKtSoXEXsd9C-0TedR4tJVYdU/view
+
+### Live Sepolia Reactor transactions (30 October 2026)
 
 I deployed a new Chainlink-backed `Gluon Sepolia E2E Test` Reactor with a `0.001 dETH` seed deposit through the live WebUI. The Reactor is [0xa57813D715919bd6D1d3124F9E9ABeeC0B21Ee5D](https://sepolia.etherscan.io/address/0xa57813D715919bd6D1d3124F9E9ABeeC0B21Ee5D). It uses the verified Sepolia Factory and the existing ETH/USD oracle adapter.
 
@@ -208,7 +220,7 @@ The contracts support the generic `IOracle` flow, the Chainlink adapter and OrbO
 
 For contracts, the test suite runs with Foundry. For the WebUI, I use TypeScript, ESLint, Vitest and the Next.js build. After the multichain changes, all 236 frontend tests across 25 files passed locally, together with TypeScript, ESLint, the production build and performance checks. The merged PRs also passed their GitHub checks. These automated checks support the live Sepolia transaction results recorded above.
 
-As of 30 October, Factory contracts are deployed and verified on Ethereum, Polygon, Base, BSC, Ethereum Classic and Sepolia, with all six networks configured in the WebUI. The explorer and network integrations were checked, including the Polygon and ETC RPC fixes, and historical Sepolia Reactors remain accessible. For the complete live transaction flow, I deployed a new Chainlink-backed Reactor on Sepolia and verified creation, fission, fusion, both beta transmutations, fees, token balances and reserves on-chain. This is the chain used for the end-to-end demonstration; the other five networks have verified Factory deployments and WebUI integration.
+As of 31 October, Factory contracts are deployed and verified on Ethereum, Polygon, Base, BSC, Ethereum Classic and Sepolia, with all six networks configured in the WebUI. The explorer and network integrations were checked, including the Polygon and ETC RPC fixes, and historical Sepolia Reactors remain accessible. For the complete live transaction flow, I deployed a new Chainlink-backed Reactor on Sepolia and verified creation, fission, fusion, both beta transmutations, fees, token balances and reserves on-chain. This is the chain used for the end-to-end demonstration; the other five networks have verified Factory deployments and WebUI integration.
 
 The WebUI security checks also recorded existing third-party dependency advisories: 29 findings (1 critical, 16 high and 12 moderate), with some packages included in the documented audit exception baseline. [WebUI issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebUI/issues/75) tracks the WalletConnect-related entries for follow-up. These advisories remain open and audit exceptions do not fix them; they are a separate maintenance and security-review item from the completed feature and Sepolia end-to-end testing work.
 
@@ -285,4 +297,3 @@ The reviews took time sometimes, but I understood why it is important to keep PR
 - [Multichain WebUI PR #72](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/72)
 - [Polygon and ETC RPC fix PR #76](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/76)
 - [Open WebUI dependency-security tracking issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebUI/issues/75)
-
