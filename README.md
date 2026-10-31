@@ -7,8 +7,8 @@
 | **Mentors** | Bruno ([@Zahnentferner](https://github.com/Zahnentferner)), Sarthak Dengre ([@DengreSarthak](https://github.com/DengreSarthak)), Aditya Bhattad ([@Aditya](https://github.com/adityabhattad2021)), José Miguel Avellana |
 | **Project page** | [GSoC 2026: Gluon Multi-Oracle Reactor Architecture for EVM](https://summerofcode.withgoogle.com/programs/2026/projects/l3AkqB4t) |
 | **Project repos** | [Gluon-EVM](https://github.com/StabilityNexus/Gluon-EVM), [Gluon-EVM-WebUI](https://github.com/StabilityNexus/Gluon-EVM-WebUI), [OrbOracle-Solidity](https://github.com/StabilityNexus/OrbOracle-Solidity) |
-| **Work record** | 1 May to 30 October 2026. This is the contribution period I used here, not the official GSoC coding dates. |
-| **Report version** | Final report, updated 30 October 2026. |
+| **Work record** | 1 May to 31 October 2026. This is the contribution period I used here, not the official GSoC coding dates. |
+| **Report version** | Final report, updated 31 October 2026. |
 | **Maintainer details** | [Contracts MAINTAINERS.md](https://github.com/StabilityNexus/Gluon-EVM/blob/main/MAINTAINERS.md) and [WebUI MAINTAINERS.md](https://github.com/StabilityNexus/Gluon-EVM-WebUI/blob/main/MAINTAINERS.md) |
 
 ## Introduction
@@ -55,12 +55,15 @@ The most difficult part for me was keeping everything matching when the contract
 
 ## Pull Requests
 
-These are my PRs in the three project repositories from May to October 2026, updated through 30 October. The latest additions cover the verified six-network Factory deployments and WebUI RPC fixes. The old WebUI CodeRabbit PR #23 was opened before this report period, so it is not counted.
+These are my PRs in the three project repositories from May to October 2026, updated through 31 October. The latest additions cover the verified six-network Factory deployments, WebUI RPC fixes and the final repository updates. The old WebUI CodeRabbit PR #23 was opened before this report period, so it is not counted.
 
 ### Merged pull requests
 
 | Repo | PR | Title | Merged |
 |---|---|---|---|
+| Gluon-EVM | [#77](https://github.com/StabilityNexus/Gluon-EVM/pull/77) | docs: display Scorecard and Best Practices badges | 2026-10-31 |
+| Gluon-EVM | [#76](https://github.com/StabilityNexus/Gluon-EVM/pull/76) | refactor: centralize fixed protocol constants | 2026-10-31 |
+| Gluon-EVM | [#75](https://github.com/StabilityNexus/Gluon-EVM/pull/75) | ci: add AOSSIE anti-slop PR workflow | 2026-10-31 |
 | Gluon-EVM | [#74](https://github.com/StabilityNexus/Gluon-EVM/pull/74) | docs: record verified Factory deployments across six networks | 2026-10-30 |
 | Gluon-EVM | [#72](https://github.com/StabilityNexus/Gluon-EVM/pull/72) | docs: add peer audit remediation report | 2026-10-27 |
 | Gluon-EVM | [#70](https://github.com/StabilityNexus/Gluon-EVM/pull/70) | chore: align Solidity SPDX headers with interim deployment guidance | 2026-10-25 |
@@ -97,6 +100,8 @@ These are my PRs in the three project repositories from May to October 2026, upd
 | Gluon-EVM | [#24](https://github.com/StabilityNexus/Gluon-EVM/pull/24) | test: add IOracle reactor integration tests | 2026-07-03 |
 | Gluon-EVM | [#23](https://github.com/StabilityNexus/Gluon-EVM/pull/23) | Week4 5 ioracle cleanup tests | 2026-06-25 |
 | Gluon-EVM | [#22](https://github.com/StabilityNexus/Gluon-EVM/pull/22) | refactor: oracle interface and Chainlink adapter | 2026-06-18 |
+| Gluon-EVM-WebUI | [#79](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/79) | docs: display Scorecard and Best Practices badges | 2026-10-31 |
+| Gluon-EVM-WebUI | [#78](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/78) | ci: add AOSSIE anti-slop PR workflow | 2026-10-31 |
 | Gluon-EVM-WebUI | [#76](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/76) | fix: replace unavailable Polygon and ETC RPC endpoints | 2026-10-30 |
 | Gluon-EVM-WebUI | [#72](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/72) | feat: configure verified Gluon factories across six networks | 2026-10-30 |
 | Gluon-EVM-WebUI | [#71](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/71) | fix: add Ethereum mainnet RPC fallback | 2026-10-29 |
@@ -162,23 +167,35 @@ I also opened [WebUI issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebU
 
 | Repository | PRs opened | Merged | Open | Closed without merge |
 |---|---:|---:|---:|---:|
-| Gluon-EVM | 39 | 36 | 0 | 3 |
-| Gluon-EVM-WebUI | 34 | 34 | 0 | 0 |
+| Gluon-EVM | 42 | 39 | 0 | 3 |
+| Gluon-EVM-WebUI | 36 | 36 | 0 | 0 |
 | OrbOracle-Solidity | 2 | 1 | 0 | 1 |
-| **Total** | **75** | **71** | **0** | **4** |
+| **Total** | **80** | **76** | **0** | **4** |
 
-These totals are based on the GitHub PR records checked on 30 October 2026. The four PRs closed without merging are listed separately above. The totals include smaller fixes, tests and documentation PRs too.
+These totals are based on the GitHub PR records checked on 31 October 2026. The four PRs closed without merging are listed separately above. The totals include smaller fixes, tests and documentation PRs too.
 
 ## Demo
 
-I used Sepolia for the demo and testing. The contract and WebUI deployment documents show the Orb and Chainlink reactors with their addresses and fission and fusion transactions. I also used the browser wallet to check the amounts and the transaction flow.
+### Live Factory deployments across six EVM networks (October 2026)
 
-- **Testnet deployments and earlier transaction results:** [Gluon-EVM Deployments.md](https://github.com/StabilityNexus/Gluon-EVM/blob/main/Deployments.md) and [Gluon-EVM-WebUI Deployments.md](https://github.com/StabilityNexus/Gluon-EVM-WebUI/blob/main/Deployments.md).
-- **Recent Fusion transaction:** [Sepolia Etherscan transaction](https://sepolia.etherscan.io/tx/0x48d6c939e9fffc92ed32de86eaa1e999ebf6fd16c57208c6a75e21a474093c29). The wallet received `0.002 dETH` in this test.
-- **Gluon Launch Video:** [Watch the video](https://drive.google.com/file/d/1CaT8oX_xKtSoXEXsd9C-0TedR4tJVYdU/view?usp=sharing) — I created this video to introduce Gluon and give a brief overview of how the protocol works.
+I deployed and verified Gluon-EVM Factory contracts on five mainnets and Ethereum Sepolia. These are real on-chain deployments with successful transaction receipts and verified contract configurations. The WebUI is also configured with the deployed Factory addresses across all six networks.
 
+| Network | Deployment transaction |
+|---|---|
+| Ethereum Mainnet | [Etherscan](https://etherscan.io/tx/0x80437034864480b15e768ceb391a93dadbd06c2722435646747b9574c16e2960) |
+| Polygon Mainnet | [PolygonScan](https://polygonscan.com/tx/0xb328ca86884dd7ffcdabd79d7b9c9763aa61b9b782766f9410fb612852abe8f9) |
+| Base Mainnet | [BaseScan](https://basescan.org/tx/0x9eb3050c1231d8b5f18d44793c02f2ee250a5e26c713c31d08593b4669d73833) |
+| BNB Smart Chain | [BscScan](https://bscscan.com/tx/0x1e798cd5160c59dd622232681fd487b1c09782245dfe8e009ed3ed4af382aea1) |
+| Ethereum Classic | [Blockscout](https://etc.blockscout.com/tx/0x0ecd3a5490aaeb0e1db8a307ec4ab41a6a2f7be756acfce1417d89f5e4a82c40) |
+| Ethereum Sepolia | [Etherscan](https://sepolia.etherscan.io/tx/0xd5a1f6a65d59bd56a57d51aea1d5cbefb7ffe537529408688d5c8c3c9d935f88) |
 
-### Latest Sepolia end-to-end tests (30 October 2026)
+The mainnet deployments establish the Factory contracts on their respective networks. I demonstrated the complete Reactor lifecycle with actual Sepolia transactions, including creation, fission, fusion and both transmutation directions.
+
+- **Live WebUI:** https://evm.gluon.stability.nexus/
+- **Deployment documentation:** [Contracts](https://github.com/StabilityNexus/Gluon-EVM/blob/main/Deployments.md) and [WebUI](https://github.com/StabilityNexus/Gluon-EVM-WebUI/blob/main/Deployments.md)
+- **Gluon launch video:** https://drive.google.com/file/d/1CaT8oX_xKtSoXEXsd9C-0TedR4tJVYdU/view
+
+### Live Sepolia Reactor transactions (30 October 2026)
 
 I deployed a new Chainlink-backed `Gluon Sepolia E2E Test` Reactor with a `0.001 dETH` seed deposit through the live WebUI. The Reactor is [0xa57813D715919bd6D1d3124F9E9ABeeC0B21Ee5D](https://sepolia.etherscan.io/address/0xa57813D715919bd6D1d3124F9E9ABeeC0B21Ee5D). It uses the verified Sepolia Factory and the existing ETH/USD oracle adapter.
 
@@ -203,7 +220,7 @@ The contracts support the generic `IOracle` flow, the Chainlink adapter and OrbO
 
 For contracts, the test suite runs with Foundry. For the WebUI, I use TypeScript, ESLint, Vitest and the Next.js build. After the multichain changes, all 236 frontend tests across 25 files passed locally, together with TypeScript, ESLint, the production build and performance checks. The merged PRs also passed their GitHub checks. These automated checks support the live Sepolia transaction results recorded above.
 
-As of 30 October, Factory contracts are deployed and verified on Ethereum, Polygon, Base, BSC, Ethereum Classic and Sepolia, with all six networks configured in the WebUI. The explorer and network integrations were checked, including the Polygon and ETC RPC fixes, and historical Sepolia Reactors remain accessible. For the complete live transaction flow, I deployed a new Chainlink-backed Reactor on Sepolia and verified creation, fission, fusion, both beta transmutations, fees, token balances and reserves on-chain. This is the chain used for the end-to-end demonstration; the other five networks have verified Factory deployments and WebUI integration.
+As of 31 October, Factory contracts are deployed and verified on Ethereum, Polygon, Base, BSC, Ethereum Classic and Sepolia, with all six networks configured in the WebUI. The explorer and network integrations were checked, including the Polygon and ETC RPC fixes, and historical Sepolia Reactors remain accessible. For the complete live transaction flow, I deployed a new Chainlink-backed Reactor on Sepolia and verified creation, fission, fusion, both beta transmutations, fees, token balances and reserves on-chain. This is the chain used for the end-to-end demonstration; the other five networks have verified Factory deployments and WebUI integration.
 
 The WebUI security checks also recorded existing third-party dependency advisories: 29 findings (1 critical, 16 high and 12 moderate), with some packages included in the documented audit exception baseline. [WebUI issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebUI/issues/75) tracks the WalletConnect-related entries for follow-up. These advisories remain open and audit exceptions do not fix them; they are a separate maintenance and security-review item from the completed feature and Sepolia end-to-end testing work.
 
@@ -280,4 +297,3 @@ The reviews took time sometimes, but I understood why it is important to keep PR
 - [Multichain WebUI PR #72](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/72)
 - [Polygon and ETC RPC fix PR #76](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/76)
 - [Open WebUI dependency-security tracking issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebUI/issues/75)
-
