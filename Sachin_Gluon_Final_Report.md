@@ -136,6 +136,7 @@ These are my PRs in the three project repositories from May to October 2026, upd
 | Gluon-EVM-WebUI | [#30](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/30) | fix: align reactor interactions with generic oracle | 2026-08-23 |
 | Gluon-EVM-WebUI | [#29](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/29) | feat: add Chainlink provider to reactor creation | 2026-08-23 |
 | Gluon-EVM-WebUI | [#28](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/28) | feat: update creation for generic oracle adapters | 2026-08-18 |
+| OrbOracle-Solidity | [#23](https://github.com/StabilityNexus/OrbOracle-Solidity/pull/23) | docs: add OrbOracle contracts peer review | 2026-10-30 |
 | OrbOracle-Solidity | [#11](https://github.com/StabilityNexus/OrbOracle-Solidity/pull/11) | docs: explain oracle value ranges | 2026-07-28 |
 
 ### Open pull requests
@@ -167,8 +168,8 @@ Most of the issues I worked on during GSoC came up through development, testing 
 |---|---:|---:|---:|---:|
 | Gluon-EVM | 42 | 39 | 0 | 3 |
 | Gluon-EVM-WebUI | 36 | 36 | 0 | 0 |
-| OrbOracle-Solidity | 2 | 1 | 0 | 1 |
-| **Total** | **80** | **76** | **0** | **4** |
+| OrbOracle-Solidity | 3 | 2 | 0 | 1 |
+| **Total** | **81** | **77** | **0** | **4** |
 
 These totals are based on the GitHub PR records checked on 31 October 2026. The four PRs closed without merging are listed separately above. The totals include smaller fixes, tests and documentation PRs too.
 
@@ -293,4 +294,3 @@ The reviews took time sometimes, but I understood why it is important to keep PR
 - [Six-network Factory deployment documentation PR #74](https://github.com/StabilityNexus/Gluon-EVM/pull/74)
 - [Multichain WebUI PR #72](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/72)
 - [Polygon and ETC RPC fix PR #76](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/76)
-- [Open WebUI dependency-security tracking issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebUI/issues/75)
