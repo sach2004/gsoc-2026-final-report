@@ -7,8 +7,8 @@
 | **Mentors** | Bruno ([@Zahnentferner](https://github.com/Zahnentferner)), Sarthak Dengre ([@DengreSarthak](https://github.com/DengreSarthak)), Aditya Bhattad ([@Aditya](https://github.com/adityabhattad2021)), José Miguel Avellana |
 | **Project page** | [GSoC 2026: Gluon Multi-Oracle Reactor Architecture for EVM](https://summerofcode.withgoogle.com/programs/2026/projects/l3AkqB4t) |
 | **Project repos** | [Gluon-EVM](https://github.com/StabilityNexus/Gluon-EVM), [Gluon-EVM-WebUI](https://github.com/StabilityNexus/Gluon-EVM-WebUI), [OrbOracle-Solidity](https://github.com/StabilityNexus/OrbOracle-Solidity) |
-| **Work record** | 1 May to 30 October 2026. This is the contribution period I used here, not the official GSoC coding dates. |
-| **Report version** | Final report, updated 30 October 2026. |
+| **Work record** | 1 May to 31 October 2026. This is the contribution period I used here, not the official GSoC coding dates. |
+| **Report version** | Final report, updated 31 October 2026. |
 | **Maintainer details** | [Contracts MAINTAINERS.md](https://github.com/StabilityNexus/Gluon-EVM/blob/main/MAINTAINERS.md) and [WebUI MAINTAINERS.md](https://github.com/StabilityNexus/Gluon-EVM-WebUI/blob/main/MAINTAINERS.md) |
 
 ## Introduction
@@ -55,12 +55,15 @@ The most difficult part for me was keeping everything matching when the contract
 
 ## Pull Requests
 
-These are my PRs in the three project repositories from May to October 2026, updated through 30 October. The latest additions cover the verified six-network Factory deployments and WebUI RPC fixes. The old WebUI CodeRabbit PR #23 was opened before this report period, so it is not counted.
+These are my PRs in the three project repositories from May to October 2026, updated through 31 October. The latest additions cover the verified six-network Factory deployments, WebUI RPC fixes and the final repository updates. The old WebUI CodeRabbit PR #23 was opened before this report period, so it is not counted.
 
 ### Merged pull requests
 
 | Repo | PR | Title | Merged |
 |---|---|---|---|
+| Gluon-EVM | [#77](https://github.com/StabilityNexus/Gluon-EVM/pull/77) | docs: display Scorecard and Best Practices badges | 2026-10-31 |
+| Gluon-EVM | [#76](https://github.com/StabilityNexus/Gluon-EVM/pull/76) | refactor: centralize fixed protocol constants | 2026-10-31 |
+| Gluon-EVM | [#75](https://github.com/StabilityNexus/Gluon-EVM/pull/75) | ci: add AOSSIE anti-slop PR workflow | 2026-10-31 |
 | Gluon-EVM | [#74](https://github.com/StabilityNexus/Gluon-EVM/pull/74) | docs: record verified Factory deployments across six networks | 2026-10-30 |
 | Gluon-EVM | [#72](https://github.com/StabilityNexus/Gluon-EVM/pull/72) | docs: add peer audit remediation report | 2026-10-27 |
 | Gluon-EVM | [#70](https://github.com/StabilityNexus/Gluon-EVM/pull/70) | chore: align Solidity SPDX headers with interim deployment guidance | 2026-10-25 |
@@ -97,6 +100,8 @@ These are my PRs in the three project repositories from May to October 2026, upd
 | Gluon-EVM | [#24](https://github.com/StabilityNexus/Gluon-EVM/pull/24) | test: add IOracle reactor integration tests | 2026-07-03 |
 | Gluon-EVM | [#23](https://github.com/StabilityNexus/Gluon-EVM/pull/23) | Week4 5 ioracle cleanup tests | 2026-06-25 |
 | Gluon-EVM | [#22](https://github.com/StabilityNexus/Gluon-EVM/pull/22) | refactor: oracle interface and Chainlink adapter | 2026-06-18 |
+| Gluon-EVM-WebUI | [#79](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/79) | docs: display Scorecard and Best Practices badges | 2026-10-31 |
+| Gluon-EVM-WebUI | [#78](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/78) | ci: add AOSSIE anti-slop PR workflow | 2026-10-31 |
 | Gluon-EVM-WebUI | [#76](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/76) | fix: replace unavailable Polygon and ETC RPC endpoints | 2026-10-30 |
 | Gluon-EVM-WebUI | [#72](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/72) | feat: configure verified Gluon factories across six networks | 2026-10-30 |
 | Gluon-EVM-WebUI | [#71](https://github.com/StabilityNexus/Gluon-EVM-WebUI/pull/71) | fix: add Ethereum mainnet RPC fallback | 2026-10-29 |
@@ -162,12 +167,12 @@ I also opened [WebUI issue #75](https://github.com/StabilityNexus/Gluon-EVM-WebU
 
 | Repository | PRs opened | Merged | Open | Closed without merge |
 |---|---:|---:|---:|---:|
-| Gluon-EVM | 39 | 36 | 0 | 3 |
-| Gluon-EVM-WebUI | 34 | 34 | 0 | 0 |
+| Gluon-EVM | 42 | 39 | 0 | 3 |
+| Gluon-EVM-WebUI | 36 | 36 | 0 | 0 |
 | OrbOracle-Solidity | 2 | 1 | 0 | 1 |
-| **Total** | **75** | **71** | **0** | **4** |
+| **Total** | **80** | **76** | **0** | **4** |
 
-These totals are based on the GitHub PR records checked on 30 October 2026. The four PRs closed without merging are listed separately above. The totals include smaller fixes, tests and documentation PRs too.
+These totals are based on the GitHub PR records checked on 31 October 2026. The four PRs closed without merging are listed separately above. The totals include smaller fixes, tests and documentation PRs too.
 
 ## Demo
 
